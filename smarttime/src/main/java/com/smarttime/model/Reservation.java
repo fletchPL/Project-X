@@ -6,21 +6,19 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by michal.berentowicz on 13.05.2017.
+ * Created by michal.berentowicz on 14.05.2017.
  */
 @Entity
-public class Address {
+public class Reservation {
     @Id
     @GeneratedValue
     private Long id;
     private Date created;
     private Date lastModified;
 
-    private boolean main;
-    private String city;
-    private String postCode;
-    private String street;
-    private String homeNumber;
+    private Date startDate;
+    private Date endData;
+    private Float cost;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -28,7 +26,7 @@ public class Address {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "business_id")
+    @JoinColumn(name = "service_id")
     @JsonBackReference
-    private Business business;
+    private Service service;
 }

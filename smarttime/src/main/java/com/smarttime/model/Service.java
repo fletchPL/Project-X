@@ -1,6 +1,7 @@
 package com.smarttime.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,19 +19,22 @@ public class Service {
     private Date lastModified;
 
     private String name;
+    private String description;
+    private String time;
+    private String price;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "owner_id")
     @JsonBackReference
     private User owner;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "business_id")
     @JsonBackReference
     private Business business;
-    private String description;
-    private String time;
-    private String price;
-    @ManyToMany(mappedBy = "services", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<User> users;
+
+    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Reservation> reservations;
 
 }
