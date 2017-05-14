@@ -18,7 +18,7 @@ public class Reservation {
 
     private Date startDate;
     private Date endData;
-    private Float cost;
+    private String cost;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -29,4 +29,89 @@ public class Reservation {
     @JoinColumn(name = "service_id")
     @JsonBackReference
     private Service service;
+
+    public Reservation(Date created, Date lastModified, Date startDate, Date endData, String cost, User user, Service service) {
+        this.created = created;
+        this.lastModified = lastModified;
+        this.startDate = startDate;
+        this.endData = endData;
+        this.cost = cost;
+        this.user = user;
+        this.service = service;
+    }
+
+    public Reservation() {
+    }
+
+    public Reservation(Date created, Date lastModified, Date startDate, Date endData, String cost) {
+        this.created = created;
+        this.lastModified = lastModified;
+        this.startDate = startDate;
+        this.endData = endData;
+        this.cost = cost;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(Date lastModified) {
+        this.lastModified = lastModified;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndData() {
+        return endData;
+    }
+
+    public void setEndData(Date endData) {
+        this.endData = endData;
+    }
+
+    public String getCost() {
+        return cost;
+    }
+
+    public void setCost(String cost) {
+        this.cost = cost;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
 }
