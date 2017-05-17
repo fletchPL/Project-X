@@ -1,66 +1,56 @@
 angular.module('app.controllers', [])
   
-.controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('menuCtrl', function ($scope, $stateParams, $rootScope) {
 
 
-}])
+})
    
-.controller('twojeWizytyCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('twojeWizytyCtrl', function ($scope, $stateParams, $rootScope,$ionicPopup) {
+	
+	if($rootScope.loginD.login != "user"){
+	$ionicPopup.alert({
+                    template: "Nie ma takiego użytkownika",	
+				    buttons: [
+							{ text: '<b>Rozumiem<b>', 
+								type: 'button-assertive',
+								
+								}
+							
+						 ]
+                });
+	}		
 
-
-}])
+})
    
-.controller('ulubioneCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('ulubioneCtrl', function ($scope, $stateParams, $rootScope) {
+		
 
-
-}])
+})
    
-.controller('ustawieniaCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('ustawieniaCtrl', function ($scope, $stateParams, $rootScope) {
 
 
-}])
+	
+
+})
       
-.controller('signupCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('signupCtrl', function ($scope, $stateParams, $rootScope) {
 
-
-}])
+})
    
-.controller('loginCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('loginCtrl', function ($scope, $stateParams, $rootScope, $ionicPopup) {
+$rootScope.loginD ={};
+$rootScope.loginD.login = "";
+$rootScope.loginD.password = "";
+$scope.wrongLoginPassword = "zle haslo";
 
+})
 
-}])
+.controller('dodajUsUgCtrl', function ($scope, $stateParams, $rootScope) {
+
+})
    
-.controller('dodajUsUgCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('zarzDzajUsUgamiCtrl', function ($scope, $stateParams, $rootScope) {
 
-
-}])
-   
-.controller('zarzDzajUsUgamiCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
+})
  
