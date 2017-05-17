@@ -22,10 +22,38 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('ulubioneCtrl', function ($scope, $stateParams, $rootScope) {
+.controller('ulubioneCtrl', function ($scope, $stateParams, $rootScope, DbConnection) {
 		
-
+	DbConnection.call
 })
+  // laczenie z baza  
+.controller('rejestracjaCtrl', function($scope, $http) {
+    $scope.signup = function () {
+    var request = $http({
+        method: "post",
+        url: "http://localhost/signup.php",
+        crossDomain : true,
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        data: {
+            username: $rootScope.userdata.username,
+            email: $rootScope.userdata.email,
+            password: $rootScope.userdata.password
+        },
+    });
+        request.success(function(data) {
+        if(data == "1"){
+         $rootScope.responseMessage = "Account Created Successfully!";
+        }
+        if(data == "2"){
+         $rootScope.responseMessage = "Can not Create Account";
+        }
+        else if(data == "0") {
+         $rootScope.responseMessage = "Email Already Exists"
+        }  
+    });
+}
+});
+   
    
 .controller('ustawieniaCtrl', function ($scope, $stateParams, $rootScope) {
 
