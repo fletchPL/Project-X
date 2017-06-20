@@ -1,6 +1,7 @@
 package com.smarttime.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import java.util.List;
 public class Service {
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
     private Date created;
     private Date lastModified;
 
@@ -61,11 +62,11 @@ public class Service {
         this.price = price;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -140,4 +141,6 @@ public class Service {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
+
+
 }
